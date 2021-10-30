@@ -1,0 +1,2 @@
+# springbootESDemo
+springboot与es的框架，用于学习springboot data elasticsearch。并研究下性能提升
