@@ -25,18 +25,25 @@ class ItemTest {
     ItemRepository itemRepository;
 
     @Test
-    public void addOneByNoArgs(){
+    public void createItemByNoArgs(){
+        Long id = new Random().nextLong();
+        Double price = new Random().nextDouble();
         Item item = new Item();
-        item.setId(new Random().nextLong());
+        item.setId(id);
         item.setContent("测试测试");
-        item.setPrice(new Random().nextDouble());
+        item.setPrice(price);
         item.setTitle("elastic");
         item.setBrand("zk");
-        itemRepository.save(item);
+        //itemRepository.save(item);
+        assertThat(item.getBrand(),is("zk"));
+        assertThat(item.getContent(),is("测试测试"));
+        assertThat(item.getTitle(),is("elastic"));
+        assertThat(item.getId(),is(id));
+        assertThat(item.getPrice(),is(price));
     }
 
     @Test
-    public void addOneByAllArgs(){
+    public void createItemByAllArgs(){
         Long id = new Random().nextLong();
         Double price = new Random().nextDouble();
         Item item = new Item(id,
