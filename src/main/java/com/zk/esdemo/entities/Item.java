@@ -19,7 +19,7 @@ public class Item {
     private String title;
     @Field(type = FieldType.Text)
     private String content;
-    @Field(type = FieldType.Text)
+    @Field(type = FieldType.Keyword)
     private String brand;
     @Field(type = FieldType.Double)
     private Double price;

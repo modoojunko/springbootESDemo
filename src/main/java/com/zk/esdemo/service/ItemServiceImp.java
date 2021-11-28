@@ -5,6 +5,7 @@ import com.zk.esdemo.repos.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,8 +19,9 @@ public class ItemServiceImp implements ItemService{
         return itemRepository.findById(id);
     }
 
-   // @Override
-    //public List<Item> findByAll() {
-    //    return itemRepository.findAll();
-    //es}
+    @Override
+    public List<Item> findByAll() {
+        return itemRepository.findAll();
+    }
+
 }
