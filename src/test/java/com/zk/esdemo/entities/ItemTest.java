@@ -6,10 +6,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
+import org.springframework.util.Assert;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
 @SpringBootTest(classes = EsDemoApplication.class)
 class ItemTest {
@@ -21,7 +25,7 @@ class ItemTest {
     ItemRepository itemRepository;
 
     @Test
-    public void addOne(){
+    public void addOneByNoArgs(){
         Item item = new Item();
         item.setId(new Random().nextLong());
         item.setContent("测试测试");
@@ -29,6 +33,23 @@ class ItemTest {
         item.setTitle("elastic");
         item.setBrand("zk");
         itemRepository.save(item);
+    }
+
+    @Test
+    public void addOneByAllArgs(){
+        Long id = new Random().nextLong();
+        Double price = new Random().nextDouble();
+        Item item = new Item(id,
+                "elasticsearch",
+                "全参数构造函数",
+                "zk",
+                price);
+        //itemRepository.save(item);
+        assertThat(item.getBrand(),is("zk"));
+        assertThat(item.getContent(),is("全参数构造函数"));
+        assertThat(item.getTitle(),is("elasticsearch"));
+        assertThat(item.getId(),is(id));
+        assertThat(item.getPrice(),is(price));
     }
 
     @Test
