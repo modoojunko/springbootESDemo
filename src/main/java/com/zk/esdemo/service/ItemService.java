@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface ItemService {
     Optional<Item> findById(Long id);
     List<Item> findByAll();
+    List<Item> findByTitleLike(String str);
 }

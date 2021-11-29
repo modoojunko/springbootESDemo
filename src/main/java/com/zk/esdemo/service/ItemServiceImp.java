@@ -24,4 +24,9 @@ public class ItemServiceImp implements ItemService{
         return itemRepository.findAll();
     }
 
+    @Override
+    public List<Item> findByTitleLike(String str) {
+        return itemRepository.findByTitleLike(str);
+    }
+
 }
